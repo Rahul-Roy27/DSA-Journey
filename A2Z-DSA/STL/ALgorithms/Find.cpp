@@ -55,7 +55,7 @@ int main()
     // list<int>
     // set<int>
     // map<int,int>
-    // so for this types we use :  distance(container.begin(), it)
+    // so for this types we use :  distance(container.begin(), it) ---> distance from start , advance(it,3) ---> move iterator by 3 posn
 
     // COUNT :
     // returns the the number of occurrences.
