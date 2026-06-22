@@ -85,3 +85,59 @@
 //     }
 // };
 
+
+// 6. === 1342. Number of Steps to Reduce a Number to Zero ===
+// class Solution {
+// public:
+//     int numberOfSteps(int num) {
+//         int n = num;
+//         int steps = 0;
+//         while (n != 0) {
+//             if (n % 2 == 0) {
+//                 n /= 2;
+//                 steps++;
+//             } else {
+//                 n--;
+//                 steps++;
+//             }
+//         }
+//         return steps;
+//     }
+// };
+
+
+// 7. === 258. Add Digits ===
+// class Solution {
+// public:
+//     int addDigits(int num) {
+//         int sum = 0;
+//         while (num > 0) {
+//             sum += num % 10;
+//             num /= 10;
+//         }
+//         if (sum <= 9 && sum >= 0) {
+//             return sum;
+//         } else {
+//             num = sum;
+//             return addDigits(num);
+//         }
+//     }
+// };
+
+
+// 8 . === 2520. Count the Digits That Divide a Number ===
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int num;
+    cin >> num ;
+    int n = num;
+    int digit = 0;
+    while(n>0){
+        int r = n%10;
+        if(num%r==0){
+            digit++;
+        }
+        n /= 10;
+    }
+}
