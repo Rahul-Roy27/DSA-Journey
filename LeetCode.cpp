@@ -126,18 +126,32 @@
 
 
 // 8 . === 2520. Count the Digits That Divide a Number ===
-#include <bits/stdc++.h>
-using namespace std;
-int main(){
-    int num;
-    cin >> num ;
-    int n = num;
-    int digit = 0;
-    while(n>0){
-        int r = n%10;
-        if(num%r==0){
-            digit++;
-        }
-        n /= 10;
-    }
-}
+// class Solution {
+// public:
+//     int countDigits(int num) {
+//         int n = num;
+//         int digit = 0;
+//         while (n > 0) {
+//             int r = n % 10;
+//             if (num % r == 0) {
+//                 digit++;
+//             }
+//             n /= 10;
+//         }
+//         return digit;
+//     }
+// };
+
+
+// 9 . === 509. Fibonacci Number
+// class Solution {
+// public:
+//     int fib(int n) {
+//         if(n==0) return 0;
+//         if(n==1) return 1;
+//         return fib(n-1) + fib(n-2);
+//     }
+// };
+
+
+// 10. === 
