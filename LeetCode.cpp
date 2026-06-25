@@ -154,4 +154,32 @@
 // };
 
 
-// 10. === 
+// 10. === 326. Power of Three
+// class Solution {
+// public:
+//     bool isPowerOfThree(int n) {
+//         if(n <= 0 ) return false;
+//         while(n%3==0){
+//             n /= 3;
+//         }
+//         if(n==1){
+//             return true;
+//         }else{
+//             return false;
+//         }
+//     }     
+// };
+
+
+// 11. === 69. Sqrt(x) ===
+    //Brute force
+// class Solution {
+// public:
+//     int mySqrt(int x) {
+//         int i = 0;
+//         while((long long)i*i <= x){
+//             i++;
+//         }
+//         return i-1;
+//     }
+// };
