@@ -624,3 +624,371 @@ freq[x]++;
 * ✅ `map` → Sorted keys.
 
 > **Next Topic:** Hashing Problems & Frequency-Based Questions (Striver A2Z)
+
+# 📘 Division Hashing (Hash Function)
+
+> **Topic:** Hashing Fundamentals (Striver A2Z DSA)
+
+---
+
+# What is Division Hashing?
+
+Division Hashing is a technique used to **map a key (element)** to an **index (bucket)** in a hash table.
+
+Instead of storing an element directly at its value as an index (like array hashing), we first compute a **hash value** using a **hash function**.
+
+The most common hash function is:
+
+```cpp
+index = key % tableSize;
+```
+
+This is known as the **Division Method**.
+
+---
+
+# Why do we need it?
+
+Suppose we want to store the number:
+
+```text
+1000000000
+```
+
+Creating an array of size `1000000001` is impossible.
+
+Instead, we calculate a much smaller index using a hash function.
+
+---
+
+# Example
+
+Suppose the hash table size is **10**.
+
+```cpp
+index = key % 10;
+```
+
+### Insert 57
+
+```cpp
+57 % 10 = 7
+```
+
+Store it in **Bucket 7**.
+
+---
+
+### Insert 24
+
+```cpp
+24 % 10 = 4
+```
+
+Store it in **Bucket 4**.
+
+---
+
+### Insert 31
+
+```cpp
+31 % 10 = 1
+```
+
+Store it in **Bucket 1**.
+
+---
+
+Current hash table:
+
+```text
+Bucket 1 → 31
+Bucket 4 → 24
+Bucket 7 → 57
+```
+
+---
+
+# Why do we use the Modulo (`%`) operator?
+
+The modulo operator always returns a value between
+
+```text
+0
+```
+
+and
+
+```text
+tableSize - 1
+```
+
+For example:
+
+```cpp
+11 % 10 = 1
+25 % 10 = 5
+87 % 10 = 7
+999 % 10 = 9
+```
+
+Hence, it always produces a valid bucket index.
+
+---
+
+# Collision
+
+## Definition
+
+A **collision** occurs when **two or more different keys generate the same hash index**.
+
+Example:
+
+```cpp
+17 % 10 = 7
+27 % 10 = 7
+37 % 10 = 7
+```
+
+All three keys map to **Bucket 7**.
+
+This is called a **collision**.
+
+---
+
+# Collision Handling (Chaining)
+
+The most common collision handling technique is **Chaining**.
+
+Instead of storing only one element in a bucket, every bucket stores a **linked list** (or another container).
+
+Example:
+
+```text
+Bucket 7
+
+↓
+
+17 → 27 → 37
+```
+
+If we want to search for `27`:
+
+1. Go to Bucket 7.
+2. Traverse the chain.
+3. Find 27.
+
+---
+
+# Why is `unordered_map` O(1) on Average?
+
+Normally, each key is distributed uniformly among different buckets.
+
+Example:
+
+```text
+Bucket 1 → 31
+Bucket 4 → 24
+Bucket 7 → 57
+```
+
+Searching requires visiting only one bucket.
+
+Therefore,
+
+```text
+Average Time Complexity = O(1)
+```
+
+---
+
+# Why is `unordered_map` O(n) in the Worst Case?
+
+Suppose every key hashes to the same bucket.
+
+```text
+Bucket 7
+
+↓
+
+5
+
+↓
+
+17
+
+↓
+
+24
+
+↓
+
+81
+
+↓
+
+99
+
+↓
+
+...
+```
+
+Searching for the last element requires traversing the entire chain.
+
+Therefore,
+
+```text
+Worst Case Time Complexity = O(n)
+```
+
+---
+
+# Why are Prime Numbers Preferred?
+
+Instead of choosing table sizes like
+
+```text
+10
+100
+1000
+```
+
+we often choose **prime numbers** such as:
+
+```text
+13
+31
+101
+1009
+```
+
+Prime table sizes generally distribute keys more uniformly, reducing the chances of collisions.
+
+---
+
+# Time Complexity
+
+| Operation | Average | Worst |
+| --------- | :-----: | :---: |
+| Insert    |   O(1)  |  O(n) |
+| Search    |   O(1)  |  O(n) |
+| Delete    |   O(1)  |  O(n) |
+
+---
+
+# Important Terms
+
+## Hash Function
+
+A function that converts a key into a bucket index.
+
+Example:
+
+```cpp
+index = key % tableSize;
+```
+
+---
+
+## Bucket
+
+A location in the hash table where elements are stored.
+
+---
+
+## Collision
+
+When two or more different keys map to the same bucket.
+
+Example:
+
+```cpp
+17 % 10 = 7
+27 % 10 = 7
+```
+
+---
+
+## Chaining
+
+A collision handling technique where multiple elements are stored in the same bucket using a linked list (or similar container).
+
+---
+
+# Interview Questions
+
+## Why is `unordered_map` faster than `map`?
+
+* `unordered_map` uses a **Hash Table**.
+* Average operations are **O(1)**.
+* `map` uses a **Red-Black Tree (Balanced BST)**.
+* Operations are **O(log n)**.
+
+---
+
+## Why can `unordered_map` become O(n)?
+
+Because of **hash collisions**.
+
+If many keys are stored in the same bucket, searching may require traversing the entire chain.
+
+---
+
+# Things to Remember ⭐
+
+* Division Method:
+
+  ```cpp
+  index = key % tableSize;
+  ```
+
+* Different keys can produce the same index.
+
+* This is called a **Collision**.
+
+* Chaining is the most common collision handling technique.
+
+* `unordered_map` uses a **Hash Table** internally.
+
+* Average complexity is **O(1)**.
+
+* Worst-case complexity is **O(n)** due to collisions.
+
+* Prime table sizes generally reduce collisions.
+
+---
+
+# Quick Revision
+
+```text
+Large Key
+     │
+     ▼
+Hash Function
+(key % tableSize)
+     │
+     ▼
+Bucket Index
+     │
+     ▼
+Store Element
+
+If multiple keys map to the same bucket
+            │
+            ▼
+        Collision
+            │
+            ▼
+     Handle using Chaining
+```
+
+---
+
+# Summary
+
+* Division Hashing maps a large key to a small bucket index using the modulo operator.
+* The hash function helps store and retrieve data efficiently.
+* Different keys may produce the same bucket index, resulting in collisions.
+* Chaining is used to handle collisions.
+* `unordered_map` provides **O(1)** average performance because of hashing, but due to collisions, the worst-case complexity can become **O(n)**.
