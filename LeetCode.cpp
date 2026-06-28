@@ -212,4 +212,56 @@
 // };
 
 
-// 13. ===
+// 13. === 217. Contains Duplicate ===
+// class Solution {
+// public:
+//     bool containsDuplicate(vector<int>& nums) {
+//         unordered_map <int,int> mp;
+//         for(int x : nums){
+//             mp[x]++;
+//         }
+//         bool isDuplicate = false;
+//         for(auto x : mp){
+//             if(x.second >1){
+//                 isDuplicate = true;
+//             }
+//         }
+//         return (isDuplicate ? true : false);
+//     }
+// };
+// --Optimal soln--
+// class Solution {
+// public:
+//     bool containsDuplicate(vector<int>& nums) {
+//         unordered_map <int,int> mp;
+//         for(int x : nums){
+//             mp[x]++;
+//             if(mp[x]>1) return true;
+//         }
+//         return false;       
+//     }
+// };
+
+
+// 14. === 169. Majority Element ====
+// class Solution {
+// public:
+//     int majorityElement(vector<int>& nums) {
+
+//         unordered_map<int, int> hash;
+
+//         for (int x : nums) {
+//             hash[x]++;
+//         }
+//         int n = nums.size();
+//         for (auto x : hash) {
+//             if (x.second > (n / 2)) {
+//                 return x.first;
+//             }
+//         }
+//         return -1; 
+//         // ---> Function must return an int on every execution path.
+//         // Although LeetCode guarantees a majority element exists,
+//         // return -1 satisfies the compiler if no element is found.
+//     }
+// };
