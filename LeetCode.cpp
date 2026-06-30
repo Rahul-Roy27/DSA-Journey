@@ -247,9 +247,7 @@
 // class Solution {
 // public:
 //     int majorityElement(vector<int>& nums) {
-
 //         unordered_map<int, int> hash;
-
 //         for (int x : nums) {
 //             hash[x]++;
 //         }
@@ -263,5 +261,29 @@
 //         // ---> Function must return an int on every execution path.
 //         // Although LeetCode guarantees a majority element exists,
 //         // return -1 satisfies the compiler if no element is found.
+//     }
+// };
+
+
+// 15. === 349. Intersection of Two Arrays ===
+// class Solution {
+// public:
+//     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+//         // Store all UNIQUE elements of nums1.
+//         unordered_set<int> st(nums1.begin(), nums1.end());
+//         // Using a set ensures the answer also contains only UNIQUE elements.
+//         unordered_set<int> ans;
+//         // Traverse nums2 and check if each element exists in nums1.
+//         for (int x : nums2) {
+//             // count(x) returns:
+//             // 1 -> element exists
+//             // 0 -> element doesn't exist
+//             if (st.count(x)) {
+//                 ans.insert(x);   // insert() ignores duplicates automatically.
+//             }
+//         }
+//         // Convert the unordered_set into a vector because LeetCode expects vector<int>.
+//         vector<int> v(ans.begin(), ans.end());
+//         return v;
 //     }
 // };
