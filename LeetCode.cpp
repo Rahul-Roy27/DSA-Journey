@@ -287,3 +287,43 @@
 //         return v;
 //     }
 // };
+
+
+// 16. === 88. Merge Sorted Array ===
+    // Problem: 88. Merge Sorted Array
+    // Approach:
+    // - Copy first m elements of nums1.
+    // - Copy all n elements of nums2.
+    // - Bubble Sort.
+    // - Assign back to nums1.
+    // Time Complexity: O((m+n)²)
+    // Space Complexity: O(m+n)
+    // Learned:
+    // - m tells us how many valid elements are in nums1.
+    // - Placeholder zeroes should not be copied.
+// class Solution {
+// public:
+//     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+//         vector <int> mergedArr;
+//         for(int i = 0 ; i < m ; i++){
+//             mergedArr.push_back(nums1[i]);           
+//         }
+//         for(int i = 0 ; i < n ; i++){
+//             mergedArr.push_back(nums2[i]);
+//         }
+//         int mn = mergedArr.size();
+//         for(int i = 0 ; i < mn - 1 ; i++){
+//             for(int j = 0 ; j < mn - i - 1 ; j++){
+//                 if(mergedArr[j] > mergedArr[j+1]){
+//                     int temp = mergedArr[j];
+//                     mergedArr[j] = mergedArr[j+1];
+//                     mergedArr[j+1] = temp;
+//                 }
+//             }
+//         }
+//         nums1 = mergedArr ;
+//     }
+// };
+
+
+// 17. === 
