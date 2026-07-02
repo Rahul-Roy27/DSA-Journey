@@ -290,17 +290,17 @@
 
 
 // 16. === 88. Merge Sorted Array ===
-    // Problem: 88. Merge Sorted Array
-    // Approach:
-    // - Copy first m elements of nums1.
-    // - Copy all n elements of nums2.
-    // - Bubble Sort.
-    // - Assign back to nums1.
-    // Time Complexity: O((m+n)²)
-    // Space Complexity: O(m+n)
-    // Learned:
-    // - m tells us how many valid elements are in nums1.
-    // - Placeholder zeroes should not be copied.
+// Problem: 88. Merge Sorted Array
+// Approach:
+// - Copy first m elements of nums1.
+// - Copy all n elements of nums2.
+// - Bubble Sort.
+// - Assign back to nums1.
+// Time Complexity: O((m+n)²)
+// Space Complexity: O(m+n)
+// Learned:
+// - m tells us how many valid elements are in nums1.
+// - Placeholder zeroes should not be copied.
 // class Solution {
 // public:
 //     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
@@ -326,4 +326,48 @@
 // };
 
 
-// 17. === 
+// 17. === 1480. Running Sum of 1D Array ===
+// class Solution {
+// public:
+//     vector<int> runningSum(vector<int>& nums) {
+//        int sum = 0;
+//        vector <int> sumArr;
+//        for(int x : nums){
+//         sum+= x;
+//         sumArr.push_back(sum);
+//        }
+//        return  sumArr;     
+//     }
+// };
+
+
+// 18. === 1929. Concatination of Array ===
+// class Solution {
+// public:
+//     vector<int> getConcatenation(vector<int>& nums) {
+//         vector <int> v1 = nums;
+//         for(auto x : nums){
+//             v1.push_back(x);
+//         }
+//         return v1;
+//     }
+// };
+
+
+// 19. === 26. Remove Duplicates from Sorted Array ===
+// class Solution {
+// public:
+//     int removeDuplicates(vector<int>& nums) {
+//         set <int> s1;
+//         for(int x : nums) s1.insert(x) ;
+//         int i = 0;
+//         for(int x : s1){
+//             nums[i] = x;
+//             i++;
+//         }
+//         return s1.size();
+//     }
+// };
+
+
+// 20. ===
