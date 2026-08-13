@@ -370,4 +370,40 @@
 // };
 
 
-// 20. ===
+// 20. === 66. Plus One ===
+// class Solution {
+// public:
+//     vector<int> plusOne(vector<int>& digits) {
+//         for (int i = digits.size() - 1; i >= 0; i--) {
+//             if (digits[i] != 9) {
+//                 digits[i] += 1;
+//                 return digits;
+//             } else {
+//                 digits[i] = 0;                             
+//             }
+//         }
+//         if(digits[0] == 0){
+//             digits.insert(digits.begin(),1);
+//             return digits;
+//         }
+//     }
+// };
+
+
+// 21. === 35. Search Insert Position ===
+// class Solution {
+// public:
+//     int searchInsert(vector<int>& v, int target) {
+//         int index ;
+//         for(int i = 0 ; i < v.size() ; i++){
+//             if(target == v[i])return i;
+//             if(v[i]>= target){
+//                 return i;
+//             };
+//         }
+//         return v.size();
+//     }
+// };
+
+
+// 22. === 
