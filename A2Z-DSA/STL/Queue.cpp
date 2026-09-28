@@ -25,11 +25,17 @@ int main(){
 
     //pop() ---> Removes the front element.
     q1.pop();
-    cout << q1.front(); // 20 bcz 10 was removed
+    cout << q1.front() << endl;; // 20 bcz 10 was removed
 
 
     // size swap empty same as stack
 
+    while (!q1.empty())
+    {
+        cout << q1.front() << " ";
+        q1.pop();
+    }
+    
 
 
 }

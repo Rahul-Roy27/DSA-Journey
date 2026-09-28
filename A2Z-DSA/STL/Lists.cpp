@@ -14,7 +14,7 @@ int main(){
     ls1.push_back(2); // {2}
     ls1.emplace_back(3); // {2,3}
     ls1.push_front(50); // {50,2,3} ie list allows front operations
-    ls1.emplace_front(20); // {20,50,2,3}
+    ls1.emplace_front(20); // {20,50,2,3}   
 
     for(auto i : ls1){
         cout << i << " ";

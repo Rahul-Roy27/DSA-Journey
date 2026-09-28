@@ -20,7 +20,6 @@
 //     }
 // };
 
-
 // 2. === 9 . Palindrome Number ===
 // class Solution {
 // public:
@@ -38,7 +37,6 @@
 //     }
 // };
 
-
 // 3. === 1523 . Count odd numbers in a interval ===
 // class Solution {
 // public:
@@ -52,7 +50,6 @@
 //         return count;
 //     }
 // };
-
 
 // 4. === 231 . Power of Two ===
 // class Solution {
@@ -70,7 +67,6 @@
 //     }
 // };
 
-
 // 5. === 1281 . Subtract the Product and Sum of Digits of an Integer ===
 // class Solution {
 // public:
@@ -84,7 +80,6 @@
 //         return prod - sum ;
 //     }
 // };
-
 
 // 6. === 1342. Number of Steps to Reduce a Number to Zero ===
 // class Solution {
@@ -105,7 +100,6 @@
 //     }
 // };
 
-
 // 7. === 258. Add Digits ===
 // class Solution {
 // public:
@@ -124,7 +118,6 @@
 //     }
 // };
 
-
 // 8 . === 2520. Count the Digits That Divide a Number ===
 // class Solution {
 // public:
@@ -142,7 +135,6 @@
 //     }
 // };
 
-
 // 9 . === 509. Fibonacci Number
 // class Solution {
 // public:
@@ -152,7 +144,6 @@
 //         return fib(n-1) + fib(n-2);
 //     }
 // };
-
 
 // 10. === 326. Power of Three
 // class Solution {
@@ -167,12 +158,11 @@
 //         }else{
 //             return false;
 //         }
-//     }     
+//     }
 // };
 
-
 // 11. === 69. Sqrt(x) ===
-    //Brute force
+// Brute force
 // class Solution {
 // public:
 //     int mySqrt(int x) {
@@ -183,7 +173,6 @@
 //         return i-1;
 //     }
 // };
-
 
 // 12. === 242. Valid Anagram ====
 // class Solution {
@@ -196,7 +185,7 @@
 //         }
 //         for(char c : t){
 //             hash2[c - 'a']++;
-//         }       
+//         }
 //         bool flag = true;
 //         for(int i = 0 ; i < 26 ; i++){
 //             if(hash1[i] != hash2[i] ){
@@ -207,10 +196,9 @@
 //             return true;
 //         }else{
 //             return false;
-//         }      
+//         }
 //     }
 // };
-
 
 // 13. === 217. Contains Duplicate ===
 // class Solution {
@@ -238,10 +226,9 @@
 //             mp[x]++;
 //             if(mp[x]>1) return true;
 //         }
-//         return false;       
+//         return false;
 //     }
 // };
-
 
 // 14. === 169. Majority Element ====
 // class Solution {
@@ -257,13 +244,12 @@
 //                 return x.first;
 //             }
 //         }
-//         return -1; 
+//         return -1;
 //         // ---> Function must return an int on every execution path.
 //         // Although LeetCode guarantees a majority element exists,
 //         // return -1 satisfies the compiler if no element is found.
 //     }
 // };
-
 
 // 15. === 349. Intersection of Two Arrays ===
 // class Solution {
@@ -288,7 +274,6 @@
 //     }
 // };
 
-
 // 16. === 88. Merge Sorted Array ===
 // Problem: 88. Merge Sorted Array
 // Approach:
@@ -306,7 +291,7 @@
 //     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
 //         vector <int> mergedArr;
 //         for(int i = 0 ; i < m ; i++){
-//             mergedArr.push_back(nums1[i]);           
+//             mergedArr.push_back(nums1[i]);
 //         }
 //         for(int i = 0 ; i < n ; i++){
 //             mergedArr.push_back(nums2[i]);
@@ -325,7 +310,6 @@
 //     }
 // };
 
-
 // 17. === 1480. Running Sum of 1D Array ===
 // class Solution {
 // public:
@@ -336,10 +320,9 @@
 //         sum+= x;
 //         sumArr.push_back(sum);
 //        }
-//        return  sumArr;     
+//        return  sumArr;
 //     }
 // };
-
 
 // 18. === 1929. Concatination of Array ===
 // class Solution {
@@ -352,7 +335,6 @@
 //         return v1;
 //     }
 // };
-
 
 // 19. === 26. Remove Duplicates from Sorted Array ===
 // class Solution {
@@ -369,7 +351,6 @@
 //     }
 // };
 
-
 // 20. === 66. Plus One ===
 // class Solution {
 // public:
@@ -379,7 +360,7 @@
 //                 digits[i] += 1;
 //                 return digits;
 //             } else {
-//                 digits[i] = 0;                             
+//                 digits[i] = 0;
 //             }
 //         }
 //         if(digits[0] == 0){
@@ -388,7 +369,6 @@
 //         }
 //     }
 // };
-
 
 // 21. === 35. Search Insert Position ===
 // class Solution {
@@ -405,5 +385,74 @@
 //     }
 // };
 
+// 22. === 204. Count primes
+// class Solution {
+// public:
+//     int countPrimes(int n) {
+//         if (n <= 2) return 0;
+//         // index i represents number (2*i + 1)
+//         int size = n / 2;
+//         vector<bool> isPrime(size, true);
+//         // isPrime[0] represents 1
+//           isPrime[0] = false;
+//         for (int i = 3; i * i < n; i += 2) {    // ---> only odd number
+//             if (isPrime[i / 2]) {
+//                 for (int j = i * i; j < n; j += 2 * i) {
+//                     isPrime[j / 2] = false;
+//                 }
+//             }
+//         }
+//         int count = 1; // 2 is prime
+//         for (int i = 1; i < size; i++) {
+//             if (isPrime[i])
+//                 count++;
+//         }
+//         return count;
+//     }
+// };
 
-// 22. === 
+// 23 === 507. Perfect Number
+// #include <bits/stdc++.h>
+// using namespace std;
+// int main()
+// {
+//     int n ; cin >> n;
+//     if( n <= 1) cout << false;
+//     int sum = 1 ;
+//     vector <int> v;
+//     for(int i = 2 ; i*i < n ; i++){
+//         if(n%i==0){
+//             v.push_back(i);
+//             v.push_back(n/i);
+//         }
+//     }
+//     for(auto i : v){
+//         cout << i << " ";
+//     }cout << endl;
+//     cout << "sum " <<  accumulate(v.begin(),v.end(),1) ;
+// }
+
+// 24 === 202. Happy Number
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cin >> n;
+    int sum ;
+
+    while (n != 1)
+    {
+        sum = 0;
+        while (n > 0)
+        {
+            int digit = n % 10;
+            digit *= digit;
+            sum += digit;
+            n /= 10;
+        }
+        n = sum;
+        cout << n << endl;
+        
+    }
+}
