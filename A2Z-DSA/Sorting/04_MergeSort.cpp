@@ -1,93 +1,166 @@
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// // Merge two sorted halves
+// // Left  -> arr[low...mid]
+// // Right -> arr[mid+1...high]
+// void merge(int arr[], int low, int mid, int high)
+// {
+//     vector<int> temp;      // Temporary array
+
+//     int left = low;        // Pointer for left half
+//     int right = mid + 1;   // Pointer for right half
+
+//     // Compare elements from both halves
+//     while (left <= mid && right <= high)
+//     {
+//         if (arr[left] <= arr[right])
+//         {
+//             temp.push_back(arr[left]);
+//             left++;
+//         }
+//         else
+//         {
+//             temp.push_back(arr[right]);
+//             right++;
+//         }
+//     }
+
+//     // Copy remaining elements from left half
+//     while (left <= mid)
+//     {
+//         temp.push_back(arr[left]);
+//         left++;
+//     }
+
+//     // Copy remaining elements from right half
+//     while (right <= high)
+//     {
+//         temp.push_back(arr[right]);
+//         right++;
+//     }
+
+//     // Copy merged elements back into the original array
+//     for (int i = low; i <= high; i++)
+//     {
+//         arr[i] = temp[i - low];
+//     }
+// }
+
+// // Merge Sort (Divide Function)
+// void mergeSort(int arr[], int low, int high)
+// {
+//     // Base case
+//     if (low >= high)
+//         return;
+
+//     // Find the middle
+//     int mid = (low + high) / 2;
+
+//     // Divide the left half
+//     mergeSort(arr, low, mid);
+
+//     // Divide the right half
+//     mergeSort(arr, mid + 1, high);
+
+//     // Merge the two sorted halves
+//     merge(arr, low, mid, high);
+// }
+
+// int main()
+// {
+//     int n;
+//     cin >> n;
+
+//     int arr[n];
+
+//     // Input
+//     for (int i = 0; i < n; i++)
+//     {
+//         cin >> arr[i];
+//     }
+
+//     // Call Merge Sort
+//     mergeSort(arr, 0, n - 1);
+
+//     // Output
+//     for (int i = 0; i < n; i++)
+//     {
+//         cout << arr[i] << " ";
+//     }
+
+//     return 0;
+// }
+
+
+
+
+#include <iostream>
+#include <vector>
 using namespace std;
 
-// Merge two sorted halves
-// Left  -> arr[low...mid]
-// Right -> arr[mid+1...high]
-void merge(int arr[], int low, int mid, int high)
-{
-    vector<int> temp;      // Temporary array
 
-    int left = low;        // Pointer for left half
-    int right = mid + 1;   // Pointer for right half
+void Merge(int arr[] , int l , int mid , int r){
+    int i = l;
+    int j = mid + 1;
 
-    // Compare elements from both halves
-    while (left <= mid && right <= high)
+    vector <int> v;
+
+    while (i <= mid && j <= r)
     {
-        if (arr[left] <= arr[right])
-        {
-            temp.push_back(arr[left]);
-            left++;
-        }
-        else
-        {
-            temp.push_back(arr[right]);
-            right++;
+        if(arr[i] <= arr[j]){
+            v.push_back(arr[i]);
+            i++;
+        }else{
+            v.push_back(arr[j]);
+            j++;
         }
     }
 
-    // Copy remaining elements from left half
-    while (left <= mid)
+    while (i <= mid)
     {
-        temp.push_back(arr[left]);
-        left++;
+        v.push_back(arr[i]);
+        i++;
+    }
+    while (j <= r)
+    {
+        v.push_back(arr[j]);
+        j++;
     }
 
-    // Copy remaining elements from right half
-    while (right <= high)
-    {
-        temp.push_back(arr[right]);
-        right++;
-    }
+    for(int k = 0 ; k < v.size() ; k++){
+        arr[l+k] = v[k];
+    } 
 
-    // Copy merged elements back into the original array
-    for (int i = low; i <= high; i++)
-    {
-        arr[i] = temp[i - low];
-    }
 }
 
-// Merge Sort (Divide Function)
-void mergeSort(int arr[], int low, int high)
-{
-    // Base case
-    if (low >= high)
-        return;
 
-    // Find the middle
-    int mid = (low + high) / 2;
+void merge_Sort(int arr[],int l,int r){
+    if(l>=r) return;
 
-    // Divide the left half
-    mergeSort(arr, low, mid);
+    int mid = (l+r)/2;
 
-    // Divide the right half
-    mergeSort(arr, mid + 1, high);
+    merge_Sort(arr,l,mid);
 
-    // Merge the two sorted halves
-    merge(arr, low, mid, high);
+    merge_Sort(arr,mid+1,r);
+
+    Merge(arr,l,mid,r);
+
+    
+
+
 }
 
-int main()
-{
-    int n;
-    cin >> n;
 
-    int arr[n];
+int main(){
+    int arr[] = {8,3,7,4,9,2,6,5};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    merge_Sort(arr,0,n-1);
 
-    // Input
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
+    for(auto x : arr){
+        cout << x << " ";
     }
 
-    // Call Merge Sort
-    mergeSort(arr, 0, n - 1);
 
-    // Output
-    for (int i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
 
-    return 0;
 }
